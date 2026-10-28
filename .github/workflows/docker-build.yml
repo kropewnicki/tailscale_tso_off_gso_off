@@ -43,9 +43,9 @@ jobs:
         uses: docker/metadata-action@v6
         with:
           images: ${{ env.IMAGE }}
-          tags: |
-            type=raw,value=testing,enable=${{ github.ref == 'refs/heads/main' }}
-            type=ref,event=tag
+        tags: |
+          type=raw,value=testing,enable=${{ github.ref == 'refs/heads/main' }}
+          type=semver,pattern={{version}}
           labels: |
             org.opencontainers.image.source=https://github.com/${{ github.repository }}
 
